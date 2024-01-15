@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs Component</title>
+    <style>
+        /* Basic styling for the tabs */
+        .tabs {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tab {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            margin-right: 5px;
+        }
+
+        .active-tab {
+            background-color: #fff;
+            font-weight: bold;
+        }
+
+        /* Styling for content panels */
+        .content-panels {
+            display: none;
+        }
+
+        .active-panel {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="tabs">
+        <li class="tab" onclick="changeTab(1)">HTML</li>
+        <li class="tab" onclick="changeTab(2)">CSS</li>
+        <li class="tab" onclick="changeTab(3)">Javascript</li>
+    </ul>
+
+    <div id="panel1" class="content-panels active-panel">
+        <h2>Panel 1 Content</h2>
+        <p>The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser</p>
+    </div>
+    <div id="panel2" class="content-panels">
+        <h2>Panel 2 Content</h2>
+        <p>Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML.</p>
+    </div>
+    <div id="panel3" class="content-panels">
+        <h2>Panel 3 Content</h2>
+        <p>JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.</p>
+    </div>
+
+    <script>
+        function changeTab(tabNumber) {
+            // Hide all content panels
+            document.querySelectorAll('.content-panels').forEach(panel => {
+                panel.classList.remove('active-panel');
+            });
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active-tab');
+            });
+
+            // Show the selected content panel
+            document.getElementById(`panel${tabNumber}`).classList.add('active-panel');
+
+            // Add active class to the clicked tab
+            document.querySelector(`.tab:nth-child(${tabNumber})`).classList.add('active-tab');
+        }
+    </script>
+
+</body>
+</html>
